@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DoctorsAppointmentsProject_Phase2.Data;
+using DoctorsAppointmentsProject_Phase2.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DoctorsAppointmentsProject_Phase2.Controllers
@@ -7,5 +9,26 @@ namespace DoctorsAppointmentsProject_Phase2.Controllers
     [ApiController]
     public class DoctorsController : ControllerBase
     {
+        private readonly AppDbContext _context;
+
+        public DoctorsController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpPost]
+        public IActionResult AddDoctor(Doctors doctor)
+        {
+            if (string.IsNullOrEmpty(doctor.Name))
+            {
+                return BadRequest("Doctor name is required");
+            }
+
+            _context.Doctors.Add(doctor);
+
+            _context.SaveChanges();
+
+            return Ok("Doctor Added Successfully");
+        }
     }
 }
