@@ -23,7 +23,7 @@ namespace DoctorsAppointmentsProject_Phase2.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddDoctor(Doctors doctor)
+        public IActionResult AddDoctor([FromBody] Doctors doctor)
         {
             if (string.IsNullOrEmpty(doctor.Name))
             {
