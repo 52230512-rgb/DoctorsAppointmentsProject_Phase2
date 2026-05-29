@@ -16,7 +16,7 @@ namespace DoctorsAppointmentsProject_Phase2.Controllers
             _context = context;
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult AddDoctor(Doctors doctor)
         {
             if (string.IsNullOrEmpty(doctor.Name))
