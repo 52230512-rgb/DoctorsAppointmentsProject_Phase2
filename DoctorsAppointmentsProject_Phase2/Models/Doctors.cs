@@ -10,6 +10,6 @@
 
         public string Phone { get; set; }
 
-        public string AvailableDay { get; set; }
+        public string Day { get; set; }
     }
 }
