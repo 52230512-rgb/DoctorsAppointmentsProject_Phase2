@@ -48,6 +48,23 @@ namespace DoctorsAppointmentsProject_Phase2.Controllers
 
             return Ok("Doctor deleted successfully");
         }
+        [HttpPut("{id}")]
+        public IActionResult UpdateDoctor(int id, Doctors updatedDoctor)
+        {
+            var doctor = _context.Doctors.Find(id);
+
+            if (doctor == null)
+                return NotFound();
+
+            doctor.Name = updatedDoctor.Name;
+            doctor.Speciality = updatedDoctor.Speciality;
+            doctor.Phone = updatedDoctor.Phone;
+            doctor.Day = updatedDoctor.Day;
+
+            _context.SaveChanges();
+
+            return Ok();
+        }
     }
 }
 
