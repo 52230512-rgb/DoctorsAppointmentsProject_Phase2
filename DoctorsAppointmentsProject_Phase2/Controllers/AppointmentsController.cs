@@ -15,7 +15,11 @@ namespace DoctorsAppointmentsProject_Phase2.Controllers
         {
             _context = context;
         }
-
+        [HttpGet]
+        public IActionResult GetAppointments()
+        {
+            return Ok(_context.Appointments.ToList());
+        }
         [HttpPost]
         public IActionResult AddAppointment(Appointments appointment)
         {
