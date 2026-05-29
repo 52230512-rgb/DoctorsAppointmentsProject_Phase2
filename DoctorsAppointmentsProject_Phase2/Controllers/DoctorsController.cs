@@ -17,6 +17,12 @@ namespace DoctorsAppointmentsProject_Phase2.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetDoctors()
+        {
+            return Ok(_context.Doctors.ToList());
+        }
+
+        [HttpPost]
         public IActionResult AddDoctor(Doctors doctor)
         {
             if (string.IsNullOrEmpty(doctor.Name))
@@ -25,10 +31,10 @@ namespace DoctorsAppointmentsProject_Phase2.Controllers
             }
 
             _context.Doctors.Add(doctor);
-
             _context.SaveChanges();
 
             return Ok("Doctor Added Successfully");
         }
     }
 }
+
