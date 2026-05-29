@@ -34,5 +34,13 @@ namespace DoctorsAppointmentsProject_Phase2.Controllers
 
             return Ok("Appointment Booked Successfully");
         }
+        [HttpPost("login")]
+        public IActionResult Login(string username, string password)
+        {
+            if (username == "admin" && password == "123")
+                return Ok();
+            else
+                return Unauthorized();
+        }
     }
 }
