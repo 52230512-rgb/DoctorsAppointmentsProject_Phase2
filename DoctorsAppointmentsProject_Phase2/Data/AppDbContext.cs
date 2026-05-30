@@ -15,6 +15,6 @@ namespace DoctorsAppointmentsProject_Phase2.Data
 
         public DbSet<Appointments> Appointments { get; set; }
 
-        public DbSet<Login> Logins { get; set; }
+     
     }
 }
