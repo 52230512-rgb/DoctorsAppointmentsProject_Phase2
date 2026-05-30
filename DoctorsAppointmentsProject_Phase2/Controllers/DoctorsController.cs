@@ -25,6 +25,10 @@ namespace DoctorsAppointmentsProject_Phase2.Controllers
         [HttpPost]
         public IActionResult AddDoctor([FromBody] Doctors doctor)
         {
+            if(doctor.Id != 0)
+            {
+                return BadRequest("Id shoould be 0");
+            }
             if (string.IsNullOrEmpty(doctor.Name))
             {
                 return BadRequest("Doctor name is required");
